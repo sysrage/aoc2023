@@ -32,9 +32,16 @@ const numbers = [
 
 let total2 = 0;
 for (let line of lines) {
-    for (const [index, number] of numbers.entries()) {
-        line = line.replaceAll(number, index + 1);
+    console.log('line', line);
+    for (let i = 0; i < line.length; i++) {
+        for (const [index, number] of numbers.entries()) {
+            if (line[i].match(/[0-9]/)) continue;
+            if (line.substring(i, i + number.length) === number) {
+                line = line.replace(number, `${index + 1}`);
+            }
+        }
     }
+    console.log('new', line);
 
     const chars = line.split('');
     let first, last;
@@ -45,6 +52,7 @@ for (let line of lines) {
         }
     }
     const value = parseInt(`${first}${last}`);
+    console.log('value', value);
     total2 += value;
 }
 console.log(`Part 2: ${total2}`);
