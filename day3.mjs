@@ -51,7 +51,7 @@ for (const number of numbers) {
     if (leftSymbol) touching = leftSymbol;
 
     const rightSymbol = symbols.find(s => s.x === number.x + number.number.length && s.y === number.y);
-    if (rightSymbol) touching = true;
+    if (rightSymbol) touching = rightSymbol;
 
     for (let i = bl.x; i <= br.x; i++) {
         const symbol = symbols.find(s => s.x === i && s.y === bl.y);
